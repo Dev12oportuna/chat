@@ -13,23 +13,26 @@ function App() {
   const [message, setMessage] = useState("")
   
   
-/*   useEffect(()=>{
+   useEffect(()=>{
   
     socket.on("connect", () => {
       console.log("Conectado al servidor de chat.");
+      socket.emit('join', {id_user_monitoreo: 14, id_sede_monitoreo:102, id_aliado_monitoreo: 89 })
+
     });
 
-    socket.on('message_back', message_back => {
+    socket.on('chat', message_back => {
+      console.log("Recibe chat***");
       console.log(message_back)
     })
 
-  },[])  */
+  },[]) /* */
 
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     //socket.emit('message', message)
-    socket.emit('join', {id_user_monitoreo: 14, id_sede_monitoreo:102, id_aliado_monitoreo: 89 })
+   socket.emit('nuevo_mensaje',{para:'102',msg:message})
     console.log(socket)
     console.log(message)
     /* const data = {
